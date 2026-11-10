@@ -43,7 +43,7 @@ pipeline {
 <settings>
     <servers>
         <server>
-            <id>jfrog-releases</id>
+            <id>snapshots</id>
             <username>${JFROG_USER}</username>
             <password>${JFROG_TOKEN}</password>
         </server>
