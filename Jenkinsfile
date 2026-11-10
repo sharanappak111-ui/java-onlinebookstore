@@ -33,7 +33,7 @@ pipeline {
     steps {
         withCredentials([
             usernamePassword(
-                credentialsId: 'jfrog-credentials',
+                credentialsId: 'jfrog-creds',
                 usernameVariable: 'JFROG_USER',
                 passwordVariable: 'JFROG_TOKEN'
             )
