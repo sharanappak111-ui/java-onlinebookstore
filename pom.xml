@@ -34,6 +34,18 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>ip-172-31-21-144-releases</name>
+        <url>http://jfrog.sharansk.shop/artifactory/mvn_repos</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>JFrog Maven Repository</name>
+        <url>http://jfrog.sharansk.shop/artifactory/mvn_repos</url>
+    </snapshotRepository>
+</distributionManagement>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.11.0</version>
 				<configuration>
