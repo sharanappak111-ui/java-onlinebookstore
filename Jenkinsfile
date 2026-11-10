@@ -28,6 +28,34 @@ pipeline {
             steps {
                 echo "This is deploy stage"
             }
-        }                    
+        }       
+        stage('Build and Upload WAR') {
+    steps {
+        withCredentials([
+            usernamePassword(
+                credentialsId: 'jfrog-credentials',
+                usernameVariable: 'JFROG_USER',
+                passwordVariable: 'JFROG_TOKEN'
+            )
+        ]) {
+            sh '''
+                cat > settings.xml <<EOF
+<settings>
+    <servers>
+        <server>
+            <id>jfrog-releases</id>
+            <username>${JFROG_USER}</username>
+            <password>${JFROG_TOKEN}</password>
+        </server>
+    </servers>
+</settings>
+EOF
+
+                mvn -B -s settings.xml clean deploy
+                rm -f settings.xml
+            '''
+        }
+    }
+}
     }
 }
